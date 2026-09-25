@@ -124,3 +124,17 @@ if (dsTheH2) {
 // <div class="the-div">
 //    <p>Nội dung thẻ p</p>
 // </div>
+
+let theDiv = document.querySelector(`.the-div`);
+
+// Kiểm tra thẻ div có tồn tại không
+if (theDiv) {
+  // Tạo thẻ <p></p>
+  let theP = document.createElement(`p`);
+
+  // Thêm nội dung cho thẻ <p></p>
+  theP.innerText = `Hôm nay trời đã nắng`;
+
+  // Hiển thị thẻ p bên trong thẻ div có class="the-div"
+  theDiv.appendChild(theP);
+}

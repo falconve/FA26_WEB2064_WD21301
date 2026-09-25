@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Bài 2: DOM: Property, Attribute, Style, Class, Event (Sự kiện)
+    </title>
+  </head>
+  <style>
+    .mau-do {
+      color: red;
+    }
+
+    .gach-chan-chu {
+      text-decoration: underline;
+    }
+  </style>
+  <body>
+    <!-- for, type, id, class, value, ... => 
+     Gọi là Attribute (thuộc tính) -->
+    <label for="">Họ tên</label>
+    <input type="text" value="Tuấn Anh" class="ho-ten" />
+
+    <div class="container">
+      <div class="student-card"></div>
+      <h3 class="the-h3">Ví dụ xoá class trong thẻ</h3>
+      <button onclick="doiMau()">Đổi màu chữ</button>
+
+      <div class="mon-hoc">
+        <h3 class="title">Danh sách môn học</h3>
+        <input type="text" class="ten-mon" />
+        <button class="them-moi" onclick="themMoi()">Thêm mới</button>
+        <button class="doi-co-chu" onclick="doiCoChu()">Đổi Cỡ chữ</button>
+        <button class="gach-chan" onclick="gachChan()">Gạch chân</button>
+        <ul class="danh-sach-mon-hoc"></ul>
+      </div>
+    </div>
+
+    <!-- Gợi ý
+     1. querySelector và querySelectorAll
+     2. .createElement và appendChild
+     3. .classList.toggle
+     4. .style.tên css
+     5. .value => Property => lấy giá trị khi JS đã chạy
+    -->
+
+    <script src="main.js"></script>
+  </body>
+</html>
