@@ -92,10 +92,23 @@ let themMoi = () => {
   if (tenMon && danhSachMonHoc) {
     if (tenMon.value !== "") {
       let theLi = document.createElement(`li`);
+      let btnXoa = document.createElement(`button`);
 
       theLi.innerText = tenMon.value;
+      btnXoa.innerText = `Xoá`;
       //console.log(theLi);
       danhSachMonHoc.appendChild(theLi);
+
+      // Đưa nút vào bên trong thẻ <li></li>
+      theLi.appendChild(btnXoa);
+      // Thêm sự kiến onclick vào nút xoá
+      // <button onclick="">Xoá</button>
+      // LƯU Ý: NẾU DÙNG .addEventListener thì tên
+      // các sự kiện phải bỏ chữ on ở đầu
+      btnXoa.addEventListener(`click`, () => {
+        theLi.remove();
+      });
+
       tenMon.value = "";
     } else {
       alert(`Tên môn không được để trống`);
@@ -111,14 +124,20 @@ let doiCoChu = () => {
   });
 };
 
-let gachChan = () => {
-  let danhSachMonHoc = document.querySelectorAll(`.danh-sach-mon-hoc >li`);
+let gachChan = document.querySelector(`.gach-chan`);
 
-  danhSachMonHoc.forEach((item) => {
-    //console.log(item);
-    item.classList.toggle(`gach-chan-chu`);
+if (gachChan) {
+  gachChan.addEventListener(`click`, () => {
+    let danhSachMonHoc = document.querySelectorAll(`.danh-sach-mon-hoc >li`);
+
+    danhSachMonHoc.forEach((item) => {
+      //console.log(item);
+      item.classList.toggle(`gach-chan-chu`);
+    });
   });
-};
+}
+
+// };
 
 // 1. Sau khi ấn nút thêm mới thì sẽ xoá trắng ô input
 // 2. Nếu ô input trống (Validate input tên môn)
