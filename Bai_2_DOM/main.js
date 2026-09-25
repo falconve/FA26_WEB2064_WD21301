@@ -86,15 +86,20 @@ let doiMau = () => {
 
 // Bài tập 2:
 let themMoi = () => {
-  let tenMon = document.querySelector(`.ten-mon`).value;
+  let tenMon = document.querySelector(`.ten-mon`);
   let danhSachMonHoc = document.querySelector(`.danh-sach-mon-hoc`);
 
   if (tenMon && danhSachMonHoc) {
-    let theLi = document.createElement(`li`);
+    if (tenMon.value !== "") {
+      let theLi = document.createElement(`li`);
 
-    theLi.innerText = tenMon;
-    //console.log(theLi);
-    danhSachMonHoc.appendChild(theLi);
+      theLi.innerText = tenMon.value;
+      //console.log(theLi);
+      danhSachMonHoc.appendChild(theLi);
+      tenMon.value = "";
+    } else {
+      alert(`Tên môn không được để trống`);
+    }
   }
 };
 
@@ -107,10 +112,14 @@ let doiCoChu = () => {
 };
 
 let gachChan = () => {
-  let danhSachMonHoc = document.querySelectorAll(`.danh-sach-mon-hoc > li`);
+  let danhSachMonHoc = document.querySelectorAll(`.danh-sach-mon-hoc >li`);
 
   danhSachMonHoc.forEach((item) => {
     //console.log(item);
     item.classList.toggle(`gach-chan-chu`);
   });
 };
+
+// 1. Sau khi ấn nút thêm mới thì sẽ xoá trắng ô input
+// 2. Nếu ô input trống (Validate input tên môn)
+// thì khi ấn thêm mới sẽ alert (`Bạn chưa nhập tên môn`)
