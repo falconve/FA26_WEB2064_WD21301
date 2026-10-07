@@ -1,0 +1,10 @@
+{
+  "bai-viet": [
+    { "id": "1", "ten": "Bài viết 1", "luotXem": "10" },
+    { "id": "2", "ten": "Bài viết 2", "luotXem": "15" },
+    { "id": "3", "ten": "Bài viết 3", "luotXem": "4" },
+    { "id": "4", "ten": "Bài viết 4", "luotXem": "30" },
+    { "id": "5", "ten": "Bài viết 5", "luotXem": "100" },
+    { "id": "6", "ten": "Bài viết 6", "luotXem": "24" }
+  ]
+}
