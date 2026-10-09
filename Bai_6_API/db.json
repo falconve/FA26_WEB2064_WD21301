@@ -1,10 +1,65 @@
 {
   "bai-viet": [
-    { "id": "1", "ten": "Bài viết 1", "luotXem": "10" },
-    { "id": "2", "ten": "Bài viết 2", "luotXem": "15" },
-    { "id": "3", "ten": "Bài viết 3", "luotXem": "4" },
-    { "id": "4", "ten": "Bài viết 4", "luotXem": "30" },
-    { "id": "5", "ten": "Bài viết 5", "luotXem": "100" },
-    { "id": "6", "ten": "Bài viết 6", "luotXem": "24" }
-  ]
+    {
+      "idBaiViet": "1",
+      "ten": "Bài viết 1",
+      "luotXem": "10",
+      "id": "lT0QQKeSFZ8"
+    },
+    {
+      "idBaiViet": "2",
+      "ten": "Bài viết 2",
+      "luotXem": "15",
+      "id": "sEHcWHuq2vs"
+    },
+    {
+      "idBaiViet": "3",
+      "ten": "Bài viết 3",
+      "luotXem": "4",
+      "id": "eOdGhcxTfMw"
+    },
+    {
+      "idBaiViet": "4",
+      "ten": "Bài viết 4",
+      "luotXem": "30",
+      "id": "NfpsFioTdSc"
+    },
+    {
+      "idBaiViet": "5",
+      "ten": "Bài viết 5",
+      "luotXem": "100",
+      "id": "Z7sNHwsLQcU"
+    },
+    {
+      "idBaiViet": "6",
+      "ten": "Bài viết 6",
+      "luotXem": "24",
+      "id": "2j6P1I0lGaI"
+    },
+    {
+      "idBaiViet": "7",
+      "ten": "Bài viết 7",
+      "luotXem": "50",
+      "id": "HtkaDsNb8LQ"
+    },
+    {
+      "idBaiViet": "8",
+      "ten": "Bài viết 8",
+      "luotXem": "200",
+      "id": "2bUEd5H-a-Q"
+    },
+    {
+      "idBaiViet": "     ",
+      "ten": "     ",
+      "luotXem": "",
+      "id": "-e8fgGkgnhA"
+    },
+    {
+      "idBaiViet": "9",
+      "ten": "Bài viết 9",
+      "luotXem": "10",
+      "id": "lsD5J-bedoc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
