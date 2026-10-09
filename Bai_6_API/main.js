@@ -20,35 +20,47 @@
 const API_BAI_VIET = `http://localhost:3000/bai-viet`;
 
 // Sử dụng fetch để gọi tới API
-fetch(API_BAI_VIET)
-  .then((res) => res.json()) // res.json() => chuyển dữ liệu sang dạng json
-  .then((data) => {
-    // VÀ HIỂN THỊ LÊN GIAO DIỆN HTML
-    let dsBaiViet = document.querySelector(`.ds-bai-viet`);
-    //console.log(dsBaiViet);
+// fetch(API_BAI_VIET)
+//   .then((res) => res.json()) // res.json() => chuyển dữ liệu sang dạng json
+//   .then((data) => {
+//     // VÀ HIỂN THỊ LÊN GIAO DIỆN HTML
+//     let dsBaiViet = document.querySelector(`.ds-bai-viet`);
+//     //console.log(dsBaiViet);
 
-    if (dsBaiViet) {
-      data.forEach((baiViet) => {
-        dsBaiViet.innerHTML += `
-        <p>Id: ${baiViet.id}</p>
-        <p>Tên bài viết: ${baiViet.ten}</p>
-        <p>Lượt xem: ${baiViet.luotXem}</p>
-        `;
-      });
-    }
-  });
+//     if (dsBaiViet) {
+//       data.forEach((baiViet) => {
+//         dsBaiViet.innerHTML += `
+//         <p>Id: ${baiViet.id}</p>
+//         <p>Tên bài viết: ${baiViet.ten}</p>
+//         <p>Lượt xem: ${baiViet.luotXem}</p>
+//         `;
+//       });
+//     }
+//   });
 
 // Khai báo hàm lấy dữ liệu
 let layBaiViet = () => {
   return fetch(API_BAI_VIET)
     .then((res) => res.json()) // res.json() => chuyển dữ liệu sang dạng json
-    .then((data) => data);
+    .then((data) => {
+      hienThiBaiViet(data);
+    });
 };
 // Khai báo hàm hiển thị
 
-let hienThiBaiViet = () => {
-  let duLieuBaiViet = layBaiViet();
-  console.log(duLieuBaiViet);
+let hienThiBaiViet = (dataBaiViet) => {
+  let dsBaiViet = document.querySelector(`.ds-bai-viet`);
+  //console.log(dsBaiViet);
+
+  if (dsBaiViet) {
+    dataBaiViet.forEach((baiViet) => {
+      dsBaiViet.innerHTML += `
+        <p>Id: ${baiViet.id}</p>
+        <p>Tên bài viết: ${baiViet.ten}</p>
+        <p>Lượt xem: ${baiViet.luotXem}</p>
+        `;
+    });
+  }
 };
 
-hienThiBaiViet();
+layBaiViet();
