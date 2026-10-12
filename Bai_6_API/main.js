@@ -61,6 +61,10 @@ let hienThiBaiViet = (dataBaiViet) => {
           <td>${baiViet.idBaiViet}</td>
           <td>${baiViet.ten}</td>
           <td>${baiViet.luotXem}</td>
+          <td>
+            <button onclick="suaBaiViet('${baiViet.id}')">Sửa</button>
+            <button onclick="xoaBaiViet('${baiViet.id}')">Xoá</button>
+          </td>
         </tr>
         `;
     });
@@ -96,6 +100,48 @@ let themMoiBaiViet = () => {
     // - Nếu trường input có dấu cách thì phải loại bỏ. Dùng .trim()
     // - Lượt xem phải là số nguyên dương
   }
+};
+
+let xoaBaiViet = (idBaiViet) => {
+  console.log(`Bài viết cần xoá có id là: ${idBaiViet}`);
+
+  // sử dụng fetch gọi API với method DELETE để xoá bài viết
+  // ${API_BAI_VIET}/${idBaiViet} => http://localhost:3000/bai-viet/1
+  fetch(`${API_BAI_VIET}/${idBaiViet}`, {
+    method: `DELETE`,
+  }).then(() => {
+    alert(`Xoá thành công`);
+  });
+};
+
+// Gợi ý luồng chức năng sửa:
+// 0. Tạo hàm suaBaiViet()
+// 1. Đưa id vào nút sửa
+// 2. Khi bấm nút sửa gọi API: http://localhost:3000/bai-viet/id
+// 3. Hiển thị thông tin từ API vào input
+
+let suaBaiViet = (idBaiViet) => {
+  fetch(`${API_BAI_VIET}/${idBaiViet}`)
+    .then((res) => res.json())
+    .then((data) => {
+      let idBaiViet = document.querySelector(`.id-bai-viet`);
+      let tenBaiViet = document.querySelector(`.ten-bai-viet`);
+      let luotXemBaiViet = document.querySelector(`.luot-xem`);
+
+      if (idBaiViet && tenBaiViet && luotXemBaiViet) {
+        idBaiViet.value = data.idBaiViet;
+        tenBaiViet.value = data.ten;
+        luotXemBaiViet.value = data.luotXem;
+      }
+    });
+
+  // Nhiệm vụ: Khi bấm nút sửa, thông tin hiển thị vào các thẻ input tương ứng
+  // thì phải ấn nút thêm bài viết và hiển thị ra nút sửa bài viết
+
+  // gợi ý:
+  // - tạo 1 css
+  // - Sử dụng phương thức phù hợp để thêm css vừa tạo vào nút Thêm bài viết
+  // - Tạo nút Sửa bài viết và hiển thị
 };
 
 layBaiViet();
