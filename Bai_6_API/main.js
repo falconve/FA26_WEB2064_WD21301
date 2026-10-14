@@ -143,21 +143,30 @@ let suaBaiViet = (idBaiViet) => {
   // - Sử dụng phương thức phù hợp để thêm css vừa tạo vào nút Thêm bài viết
   // - Tạo nút Sửa bài viết và hiển thị
 
+  // Ẩn nút thêm
   let nutThemMoi = document.querySelector(`.them-moi`);
   nutThemMoi.classList.add(`an-nut-them`);
 
-  let nutSua = document.createElement(`button`);
+  let nutSua = document.querySelector(`.nut-sua`); // => null
 
-  nutSua.textContent = `Sửa bài`;
+  if (!nutSua) {
+    // Tạo mới nút sửa
+    let nutSua = document.createElement(`button`);
 
-  // Sử dụng setAtttribute để thêm onclick vào thẻ button
-  nutSua.setAttribute(`onclick`, `suaBai()`);
+    nutSua.textContent = `Sửa bài`;
 
-  // <button onclick="suaBai">Sửa bài</button>
+    // Sử dụng setAtttribute để thêm onclick vào thẻ button
+    nutSua.setAttribute(`onclick`, `suaBai()`);
+    nutSua.setAttribute(`class`, `nut-sua`);
 
-  let dsBaiViet = document.querySelector(`.them-bai-viet`);
+    // <button onclick="suaBai" class="nut-sua">Sửa bài</button>
 
-  dsBaiViet.appendChild(nutSua);
+    let dsBaiViet = document.querySelector(`.them-bai-viet`);
+
+    dsBaiViet.appendChild(nutSua);
+  } else {
+    console.log(`Đã có nút này rồi không tạo mới nữa`);
+  }
 };
 
 let suaBai = () => {
