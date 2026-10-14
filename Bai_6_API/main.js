@@ -58,7 +58,7 @@ let hienThiBaiViet = (dataBaiViet) => {
     dataBaiViet.forEach((baiViet) => {
       dsBaiViet.innerHTML += `
         <tr>
-          <td>${baiViet.idBaiViet}</td>
+          <td>${baiViet.id}</td>
           <td>${baiViet.ten}</td>
           <td>${baiViet.luotXem}</td>
           <td>
@@ -129,7 +129,7 @@ let suaBaiViet = (idBaiViet) => {
       let luotXemBaiViet = document.querySelector(`.luot-xem`);
 
       if (idBaiViet && tenBaiViet && luotXemBaiViet) {
-        idBaiViet.value = data.idBaiViet;
+        idBaiViet.value = data.id;
         tenBaiViet.value = data.ten;
         luotXemBaiViet.value = data.luotXem;
       }
@@ -142,6 +142,44 @@ let suaBaiViet = (idBaiViet) => {
   // - tạo 1 css
   // - Sử dụng phương thức phù hợp để thêm css vừa tạo vào nút Thêm bài viết
   // - Tạo nút Sửa bài viết và hiển thị
+
+  let nutThemMoi = document.querySelector(`.them-moi`);
+  nutThemMoi.classList.add(`an-nut-them`);
+
+  let nutSua = document.createElement(`button`);
+
+  nutSua.textContent = `Sửa bài`;
+
+  // Sử dụng setAtttribute để thêm onclick vào thẻ button
+  nutSua.setAttribute(`onclick`, `suaBai()`);
+
+  // <button onclick="suaBai">Sửa bài</button>
+
+  let dsBaiViet = document.querySelector(`.them-bai-viet`);
+
+  dsBaiViet.appendChild(nutSua);
+};
+
+let suaBai = () => {
+  // Lấy dữ liệu từ các input
+  let tenBaiViet = document.querySelector(`.ten-bai-viet`).value;
+  let luotXem = document.querySelector(`.luot-xem`).value;
+  let idBaiViet = document.querySelector(`.id-bai-viet`).value;
+
+  if (tenBaiViet && luotXem && idBaiViet) {
+    // Tạo object để lưu lại thông tin người dùng đã nhập ở input
+    let baiVietSua = {
+      ten: tenBaiViet,
+      luotXem: luotXem,
+    };
+    // Gọi API với phương thức PUT
+    fetch(`${API_BAI_VIET}/${idBaiViet}`, {
+      method: `PUT`,
+      body: JSON.stringify(baiVietSua),
+    }).then(() => {
+      alert(`Sửa thành công`);
+    });
+  }
 };
 
 layBaiViet();
