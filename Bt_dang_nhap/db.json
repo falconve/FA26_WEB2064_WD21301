@@ -1,0 +1,4 @@
+{
+  "nguoi-dung": [{ "taiKhoan": "admin", "matKhau": "123456" }],
+  "$schema": "./node_modules/json-server/schema.json"
+}
