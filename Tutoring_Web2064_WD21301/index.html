@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusHelp | Quản lý yêu cầu hỗ trợ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="CampusHelp">
+          <span class="brand-icon">C<span>+</span></span>
+          <span class="brand-name">Campus<span>Help</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="course-tag">WEB2064 · Assignment 02</span>
+          <span class="user-avatar" title="Khu vực sinh viên">SV</span>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            <span class="status-dot"></span> STUDENT SUPPORT CENTER
+          </div>
+          <h1>Quản lý yêu cầu <span>hỗ trợ sinh viên</span></h1>
+          <p>
+            Theo dõi, cập nhật và giải quyết các yêu cầu hỗ trợ trên một giao
+            diện duy nhất.
+          </p>
+        </div>
+        <div class="hero-mark" aria-hidden="true">?</div>
+      </section>
+
+      <section class="stats-grid" aria-label="Thống kê yêu cầu">
+        <article class="stat-card stat-total">
+          <div class="stat-heading">
+            <span>Tổng yêu cầu</span><span class="stat-icon">◈</span>
+          </div>
+          <strong id="statTotal">0</strong
+          ><small>Tất cả yêu cầu trong hệ thống</small>
+        </article>
+        <article class="stat-card stat-new">
+          <div class="stat-heading">
+            <span>Mới tiếp nhận</span><span class="stat-icon">✦</span>
+          </div>
+          <strong id="statNew">0</strong><small>Chưa được xử lý</small>
+        </article>
+        <article class="stat-card stat-processing">
+          <div class="stat-heading">
+            <span>Đang xử lý</span><span class="stat-icon">◷</span>
+          </div>
+          <strong id="statProcessing">0</strong><small>Đang được hỗ trợ</small>
+        </article>
+        <article class="stat-card stat-resolved">
+          <div class="stat-heading">
+            <span>Đã giải quyết</span><span class="stat-icon">✓</span>
+          </div>
+          <strong id="statResolved">0</strong><small>Đã hoàn tất yêu cầu</small>
+        </article>
+      </section>
+
+      <main class="dashboard-grid">
+        <aside class="panel editor-panel">
+          <div class="panel-title-line">
+            <div>
+              <div class="section-kicker">BIỂU MẪU</div>
+              <h2>Thông tin yêu cầu</h2>
+            </div>
+            <span class="corner-badge">01</span>
+          </div>
+          <p class="hint">Nhập thông tin để gửi yêu cầu hỗ trợ mới.</p>
+          <div class="field">
+            <label for="txtSubject"
+              >Tiêu đề yêu cầu <span class="required">*</span></label
+            >
+            <input
+              id="txtSubject"
+              type="text"
+              placeholder="VD: Không đăng nhập được LMS"
+            />
+          </div>
+          <div class="field">
+            <label for="txtStudent"
+              >Họ và tên sinh viên <span class="required">*</span></label
+            >
+            <input
+              id="txtStudent"
+              type="text"
+              placeholder="Nhập họ tên sinh viên"
+            />
+          </div>
+          <div class="field">
+            <label for="cboPriority">Mức độ ưu tiên</label>
+            <select id="cboPriority">
+              <option value="normal">Bình thường</option>
+              <option value="high">Khẩn cấp</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="txtDescription">Nội dung chi tiết</label>
+            <textarea
+              id="txtDescription"
+              rows="5"
+              placeholder="Mô tả vấn đề cần được hỗ trợ..."
+            ></textarea>
+          </div>
+          <div class="form-actions">
+            <button
+              id="btnAdd"
+              class="button button-primary"
+              onclick="addRequest()"
+            >
+              + Tạo yêu cầu
+            </button>
+            <button
+              id="btnSave"
+              class="button button-primary hidden"
+              type="button"
+            >
+              Lưu thay đổi
+            </button>
+            <button
+              id="btnCancel"
+              class="button button-secondary hidden"
+              type="button"
+            >
+              Hủy chỉnh sửa
+            </button>
+          </div>
+          <p id="message" class="message" aria-live="polite"></p>
+          <div class="helper-note">
+            <span>ⓘ</span> Trường có dấu <b>*</b> là bắt buộc.
+          </div>
+        </aside>
+
+        <div class="content-column">
+          <section class="panel list-panel">
+            <div class="panel-title-line list-heading">
+              <div>
+                <div class="section-kicker">DỮ LIỆU TỪ JSON-SERVER</div>
+                <h2>Danh sách yêu cầu</h2>
+              </div>
+              <span id="resultCount" class="count-pill">0 kết quả</span>
+            </div>
+            <div id="requestList" class="request-list">
+              <div class="empty-state">
+                <span class="empty-icon">◫</span
+                ><strong>Chưa tải được danh sách</strong>
+                <p>
+                  Sinh viên cần hoàn thiện hàm GET và tạo thẻ bằng JavaScript
+                  DOM.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel detail-panel">
+            <div class="panel-title-line">
+              <div>
+                <div class="section-kicker">TƯƠNG TÁC DOM</div>
+                <h2>Chi tiết yêu cầu</h2>
+              </div>
+              <span class="detail-symbol">↗</span>
+            </div>
+            <div id="requestDetail" class="detail-content">
+              Di chuột vào một yêu cầu để xem đầy đủ thông tin.
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer>
+        CampusHelp · Assignment JavaScript DOM &amp; JSON-Server · Giao diện
+        HTML/CSS cung cấp sẵn
+      </footer>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

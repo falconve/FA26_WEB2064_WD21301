@@ -44,8 +44,20 @@
       "ten": "Bài viết 9",
       "luotXem": "10",
       "id": "lsD5J-bedoc"
+    },
+    {
+      "idBaiViet": "1000",
+      "ten": "Bài viết 100",
+      "luotXem": "19",
+      "id": "d7WKJZw7t_o"
     }
   ],
-  "nguoi-dung": [{ "taiKhoan": "admin", "matKhau": "123456" }],
+  "nguoi-dung": [
+    {
+      "taiKhoan": "admin",
+      "matKhau": "123456",
+      "id": "UeN7AAc2UI8"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
